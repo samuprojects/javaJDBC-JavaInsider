@@ -1,0 +1,29 @@
+No MySQL Workbench o professor clicou no ícone com a descrição "Create a new schema in the connected server"
+Nomeou como customerdb, para representar um simples cadastro de clientes, sendo o objetivo maior o de compreender
+como funciona a integração entre aplicação e banco de dados utilizando jdbc.
+Após o apply foi gerado o código SQL
+CREATE SCHEMA `customerdb` ;
+
+Com o botão direito do menu selecionou como Default em seguida criou uma tabela em Create Table...
+Nomeado a tabela como customer e os campos conforme a seguir:
+Column Name   Datatype       PK NN  AI
+id            INT             y  y  y
+name          VARCHAR(45)        y
+email         VARCHAR(45)        y
+age           INT                y
+
+Após o apply gerou o código SQL
+CREATE TABLE `customerdb`.`customer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `age` INT NOT NULL,
+  PRIMARY KEY (`id`));
+
+Selecionou os dados da tabela para confirmar os campos gerando o
+SELECT * FROM customerdb.customer;
+
+
+Não é possível integrar a aplicação sem o trabalho prévio de criação do banco,
+definição do servidor, configuração de acesso(endereço de conexão, usuário/senha),
+informações essas necessárias para configurar o Driver JDBC, além da criação das tabelas.
