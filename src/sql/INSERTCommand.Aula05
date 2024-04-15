@@ -1,0 +1,7 @@
+resultado da busca
+SELECT * FROM customer;
+após o lançamento na aplicação Java
+
+# id, name, email, age
+1'1', 'Pedro', 'pedro@email.com', '20'
+2'2', 'Pedro', 'pedro@email.com', '20'
