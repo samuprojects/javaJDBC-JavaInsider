@@ -1,0 +1,11 @@
+Verificado no workbench SELECT * FROM customer; após o delete do id 2 na aplicação, o resultado
+
+# id, name, email, age
+1'1', 'Pedro', 'pedro@email.com', '20'
+
+Depois realizado update no nome do id 1 pela aplicação e verificado no workbench
+SELECT * FROM customer;
+
+# id, name, email, age
+1'1', 'Pedro Silva', 'pedro@email.com', '20'
+
