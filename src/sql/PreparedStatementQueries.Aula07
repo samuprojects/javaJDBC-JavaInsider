@@ -1,0 +1,6 @@
+Após insert utilizando o PreparedStatement na aplicação
+verificado no workbench SELECT * FROM customer; o resultado
+# id, name, email, age
+1'1', 'Pedro Silva', 'pedro@email.com', '20'
+2'3', 'Paulo', 'paulo@email.com', '25'
+
