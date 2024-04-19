@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.metadata;
 
 /*
 * O JDBC possui uma API para trabalhar com metadados.

@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.core;
 
 /*
 * O PreparedStatement (uma interface que estende Statement) também é um Statement(que tem o papel de ser o veículo que encaminha as instruções

@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.core;
 
 /*
 * O banco de dados é um recurso finito, limitado, que deve ser

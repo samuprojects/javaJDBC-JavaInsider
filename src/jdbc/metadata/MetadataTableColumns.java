@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.metadata;
 
 /*
 * Utilizando o mesmo mecanismo da aula passada foi observado a estrutura do ResultSet (getColumns) em modo debug

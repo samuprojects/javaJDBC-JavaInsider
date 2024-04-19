@@ -1,0 +1,12 @@
+resultado dos inserts realizados via aplicação
+
+# id, name, email, age, city
+1'1', 'Pedro', 'pedro@email.com', '20', 'Rio de Janeiro'
+2'3', 'Paulo', 'paulo@email.com', '25', 'Fortaleza'
+3'5', 'Maria', 'maria@email.com', '30', NULL
+4'6', 'Maria', 'maria@email.com', '30', NULL
+
+
+# id, customer_id, description, number
+1'1', '5', 'Celular', '(21) 3498-49389'
+2'2', '6', 'Celular', '(21) 3498-49389'

@@ -1,12 +1,11 @@
-package jdbc;
+package jdbc.core;
 
 /*
 * Aula 06
-* Excluindo o registro com id 2
+* Atualização do nome no registro com id 1
 *
 * Para operações de alterações como insert, update e delete utilizar o executeUpdate
- * com a instrução SQL
-*
+* com a instrução SQL
 *
 * */
 
@@ -14,7 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class DeleteCustomers {
+public class UpdateCustomers {
 
     public static void main(String[] args) throws Exception {
 
@@ -22,10 +21,10 @@ public class DeleteCustomers {
             System.out.println("Connected successfully!");
 
             try (Statement stmt = conn.createStatement()) {
-                stmt.executeUpdate("DELETE FROM customer WHERE id = 2");
+                stmt.executeUpdate("UPDATE customer SET name = 'Pedro Silva' WHERE id = 1");
             }
 
-            System.out.println("Customer deleted!");
+            System.out.println("Customer updated!");
         }
     }
 }

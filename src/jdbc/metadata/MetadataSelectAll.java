@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.metadata;
 
 /*
 * Fazer um SELECT (*) em uma tabela para retornar os dados conforme as colunas da tabela.
