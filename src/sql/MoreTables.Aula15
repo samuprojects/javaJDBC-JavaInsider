@@ -1,0 +1,52 @@
+no workbench, customerdb, Tables e no menu do botão direito Create Table...
+foi criado a tabela phone para associar um cliente a múltiplos números de telefone
+
+Column Name     Datatype       PK NN  AI
+id              INT             y  y  y
+customer_id     INT                y
+description     VARCHAR(15)        y
+number          VARCHAR(20)        y
+
+
+após  apply gerado SQL
+CREATE TABLE `customerdb`.`phone` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `customer_id` INT NOT NULL,
+  `description` VARCHAR(15) NOT NULL,
+  `number` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+em seguida criado uma foreign key com nome fk_phone_customer_id_customer_id para referenciar
+a coluna customer_id de phone com a coluna id da tabela customer
+
+Foreign Key Name                             Referenced Table             Column                   Referenced Column
+fk_phone_customer_id_customer_id             'customerdb'.'customer'      customer_id              id
+
+depois com o apply gerou SQL
+ALTER TABLE `customerdb`.`phone`
+ADD INDEX `fk_phone_customer_id_customer_id_idx` (`customer_id` ASC) VISIBLE;
+;
+ALTER TABLE `customerdb`.`phone`
+ADD CONSTRAINT `fk_phone_customer_id_customer_id`
+  FOREIGN KEY (`customer_id`)
+  REFERENCES `customerdb`.`customer` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+Depois confirmou os dados de customer gerando o
+SELECT * FROM customerdb.customer;
+# id, name, email, age, city
+1'1', 'Pedro', 'pedro@email.com', '20', 'Rio de Janeiro'
+2'3', 'Paulo', 'paulo@email.com', '25', 'Fortaleza'
+
+
+Depois confirmou os dados de phone gerando o
+SELECT * FROM customerdb.phone;
+# id, customer_id, description, number
+* null null          null          null
+
+Explicou ser um relacionamento de 1 para muitos entre customer e phone
+bastando criar os números de telefone com o mesmo customer_id para ter
+vários números de telefone atrelados ao mesmo cliente.
