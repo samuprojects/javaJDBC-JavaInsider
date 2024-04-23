@@ -1,4 +1,4 @@
-package jdbc.dao;
+package jdbc.dao.core;
 
 @SuppressWarnings("ALL")
 public class DAOException extends RuntimeException { // herdar de RuntimeException a torna em uma Unchecked Exception

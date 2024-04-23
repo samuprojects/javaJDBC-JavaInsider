@@ -1,4 +1,4 @@
-package jdbc.dao;
+package jdbc.dao.core;
 
 import java.io.IOException;
 import java.sql.DriverManager;

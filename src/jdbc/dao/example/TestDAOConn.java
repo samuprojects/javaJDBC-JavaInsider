@@ -1,6 +1,8 @@
-package jdbc.dao;
+package jdbc.dao.example;
 
-import static jdbc.dao.ConnectionFactory.getConnection;
+import jdbc.dao.core.DBConn;
+
+import static jdbc.dao.core.ConnectionFactory.getConnection;
 
 @SuppressWarnings("ALL")
 public class TestDAOConn {

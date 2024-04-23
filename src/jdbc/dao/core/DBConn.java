@@ -1,4 +1,4 @@
-package jdbc.dao;
+package jdbc.dao.core;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,11 @@ public class DBConn implements AutoCloseable { // AutoCloseable permite Objetos 
     }
 
     @Override
-    public void close() throws Exception { // método obrigatório do AutoCloseable
-        conn.close();
+    public void close() { // método obrigatório do AutoCloseable
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DAOException("Error closing connection", e);
+        }
     }
 }

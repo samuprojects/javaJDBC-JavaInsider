@@ -1,4 +1,4 @@
-package jdbc.dao;
+package jdbc.dao.core;
 
 /*
 * Agora que temos uma ConnectionFactory que cria um DBConn, que é a conexão, vamos utilizar a conexão
