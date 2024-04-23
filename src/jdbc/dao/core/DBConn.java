@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
+
 @SuppressWarnings("ALL")
 public class DBConn implements AutoCloseable { // AutoCloseable permite Objetos da classe sejam usados na definição de estruturas de try-with-resources
 
@@ -15,7 +17,7 @@ public class DBConn implements AutoCloseable { // AutoCloseable permite Objetos 
 
     public PreparedStatement statement(String sql) {
         try {
-            return conn.prepareStatement(sql);
+            return conn.prepareStatement(sql, RETURN_GENERATED_KEYS);
         } catch (SQLException e) {
             throw new DAOException(e);
         }

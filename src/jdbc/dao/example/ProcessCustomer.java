@@ -11,7 +11,9 @@ public class ProcessCustomer {
             Customer customer = new Customer("Pedro", "pedro@pedro.com", 35);
 
             CustomerDAO customerDAO = new CustomerDAO(conn);
-            customerDAO.insert(customer);
+            Integer id = customerDAO.insert(customer);
+
+            System.out.println("ID = " + id);
         }
     }
 }

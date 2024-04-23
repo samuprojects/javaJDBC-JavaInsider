@@ -64,7 +64,7 @@ public class DAO <T, ID> {
         throw new UnsupportedOperationException();
     }
 
-    public void insert (T obj) {
+    public ID insert (T obj) {
         throw new UnsupportedOperationException();
     }
 
