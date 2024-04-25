@@ -31,4 +31,28 @@ public class DBConn implements AutoCloseable { // AutoCloseable permite Objetos 
             throw new DAOException("Error closing connection", e);
         }
     }
+
+    public void beginTransaction() {
+        try {
+            conn.setAutoCommit(false);
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public void commitTransaction() {
+        try {
+            conn.commit();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public void rollbackTransaction() {
+        try {
+            conn.rollback();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
 }
