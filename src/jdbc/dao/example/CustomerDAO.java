@@ -50,6 +50,20 @@ public class CustomerDAO extends DAO<Customer, Integer> {
         }
     }
 
+    @Override
+    public void deleteById(Integer id) {
+        try (PreparedStatement stmt = conn.statement("DELETE FROM customer WHERE id = ?")) {
+            stmt.setInt(1, id);
+
+            if(stmt.executeUpdate() != 1 ) {
+                throw new DAOException("ID not found: " + id);
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
     private Customer extractFromResultSet(ResultSet rs) throws SQLException {
         Integer id = rs.getInt(1);
         String name = rs.getString(2);
