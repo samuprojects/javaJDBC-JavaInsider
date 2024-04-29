@@ -1,5 +1,6 @@
 package jdbc.tasks;
 
+@SuppressWarnings("ALL")
 public class TasksApp {
 
     public static void main(String[] args) {
@@ -8,7 +9,9 @@ public class TasksApp {
     }
 
     public void start() {
-        String command = UI.nextCommand();
-        UI.show(command);
+        while (true) {
+            Command command = UI.nextCommand();
+            UI.show(command.toString());
+        }
     }
 }
