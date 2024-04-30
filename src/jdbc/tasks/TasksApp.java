@@ -10,8 +10,14 @@ public class TasksApp {
 
     public void start() {
         while (true) {
-            Command command = UI.nextCommand();
-            UI.show(command.toString());
+            try {
+                Command command = UI.nextCommand();
+
+                UI.show(command.toString());
+            } catch (InvalidCommandException e) {
+                UI.show(e.getMessage());
+            }
+
         }
     }
 }
