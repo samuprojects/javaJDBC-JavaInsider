@@ -2,8 +2,16 @@ package jdbc.tasks;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.joining;
+
 @SuppressWarnings("ALL")
 public class CommandInterpreter {
+
+    private final TaskDAO dao;
+
+    public CommandInterpreter(TaskDAO dao) {
+        this.dao = dao;
+    }
 
     public String interpret (Command command) {
         var params = command.params();
@@ -17,7 +25,15 @@ public class CommandInterpreter {
     }
 
     private String list() {
-        return "TODO";
+        var tasks = dao.list();
+
+        String tasksStr = tasks
+                .stream()
+                .map(t -> String.format("%-4d%s", t.id(), t.description()))
+                .collect(joining("\n"));
+
+        return String.format("%s\n\n%d tasks found", tasksStr, tasks.size());
+
     }
 
     private String quit() {

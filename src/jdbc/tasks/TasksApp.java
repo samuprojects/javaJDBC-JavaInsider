@@ -1,8 +1,12 @@
 package jdbc.tasks;
 
+import jdbc.dao.core.ConnectionFactory;
+import jdbc.dao.core.DBConn;
+
 @SuppressWarnings("ALL")
 public class TasksApp {
 
+    private DBConn conn;
     private CommandInterpreter interpreter;
 
     public static void main(String[] args) {
@@ -24,6 +28,7 @@ public class TasksApp {
     }
 
     private void setup() {
-        interpreter = new CommandInterpreter();
+        conn = ConnectionFactory.getConnection();
+        interpreter = new CommandInterpreter(new TaskDAO(conn));
     }
 }
