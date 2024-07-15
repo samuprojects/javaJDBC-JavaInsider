@@ -39,7 +39,8 @@ public class CommandInterpreter {
     }
 
     private String quit() {
-        return "TODO";
+        System.exit(0);
+        return null;
     }
 
     private String insert (List<String> params) {

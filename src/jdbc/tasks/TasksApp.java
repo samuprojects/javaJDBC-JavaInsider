@@ -3,7 +3,7 @@ package jdbc.tasks;
 import jdbc.dao.core.ConnectionFactory;
 import jdbc.dao.core.DBConn;
 
-@SuppressWarnings("ALL")
+
 public class TasksApp {
 
     private DBConn conn;
@@ -13,6 +13,7 @@ public class TasksApp {
         new TasksApp().start();
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     public void start() {
         setup();
 
@@ -30,5 +31,16 @@ public class TasksApp {
     private void setup() {
         conn = ConnectionFactory.getConnection();
         interpreter = new CommandInterpreter(new TaskDAO(conn));
+
+        Runtime
+                .getRuntime()
+                .addShutdownHook(
+                        new Thread(
+                                () -> { // isso adiciona na JVM comando para executar prestes ao encerramento da aplicação
+                                    conn.close(); // assim seguramente a conexão com o banco de dados é fechada.
+                                    UI.show("Bye");
+                                }
+                        )
+                );
     }
 }
