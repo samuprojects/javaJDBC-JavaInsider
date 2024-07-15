@@ -61,6 +61,21 @@ public class TaskDAO extends DAO<Task, Integer> {
         }
     }
 
+    @Override
+    public void update(Task task) {
+        try (var stmt = conn.statement("UPDATE task SET description = ? WHERE id = ?")) {
+            stmt.setString(1, task.description());
+            stmt.setInt(2, task.id());
+
+            if (stmt.executeUpdate() != 1) {
+                throw new DAOException("Record does not exist");
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
     private Task extractFromResultSet(ResultSet rs) throws SQLException {
         return new Task(rs.getInt("id"), rs.getString("description"));
     }

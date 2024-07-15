@@ -67,6 +67,17 @@ public class CommandInterpreter {
     }
 
     private String update (List<String> params) {
-        return "TODO";
+        if (params.size() < 2){
+            return "You must provide an ID and a description";
+        }
+
+        try {
+            dao.update(new Task(Integer.parseInt(params.get(0)), params.get(1)));
+        } catch (NumberFormatException e) {
+            return "ID is not valid";
+        } catch (DAOException e) {
+            return "Task does not exist";
+        }
+        return "Task updated successfully!";
     }
 }
