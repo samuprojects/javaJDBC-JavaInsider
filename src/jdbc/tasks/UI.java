@@ -17,18 +17,18 @@ public final class UI {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            List<String> tokens = Arrays.asList(scanner.nextLine().split(" "));
-            Action action = Action.fromString(tokens.get(0));
-
+            String line = scanner.nextLine().trim();
             List<String> params = new ArrayList<>();
 
-            if (tokens.size() > 1) {
-                params.add(tokens.get(1));
+            int endPos= line.indexOf(' ');
 
-                if (tokens.size() > 2) {
-                    params.add(String.join(" ", tokens.subList(2, tokens.size())).trim());
-                }
+            if (endPos < 0) { // se for menor que 0 é porque não encontrou espaço em branco
+                endPos = line.length(); // será o próprio endPos
+            } else {
+                params = Arrays.asList(line.substring(endPos + 1).split(",")); // a vírgula será utilizada para separar o id do texto nos updates
             }
+
+            Action action = Action.fromString(line.substring(0, endPos));
 
             return new Command(action, params);
         } catch (Exception e) {
