@@ -1,5 +1,7 @@
 package jdbc.tasks;
 
+import jdbc.dao.core.DAOException;
+
 import java.util.List;
 
 import static java.util.stream.Collectors.joining;
@@ -50,7 +52,18 @@ public class CommandInterpreter {
     }
 
     private String delete (List<String> params) {
-        return "TODO";
+        if (params.isEmpty()){
+            return "You must provide an ID";
+        }
+
+        try {
+            dao.deleteById(Integer.parseInt(params.get(0)));
+        } catch (NumberFormatException e) {
+            return "ID is not valid";
+        } catch (DAOException e) {
+            return "Task does not exist";
+        }
+        return "Task deleted successfully!";
     }
 
     private String update (List<String> params) {

@@ -48,6 +48,19 @@ public class TaskDAO extends DAO<Task, Integer> {
         }
     }
 
+    @Override
+    public void deleteById(Integer id) {
+        try (var stmt = conn.statement("DELETE FROM task WHERE id = ?")) {
+            stmt.setInt(1, id);
+            if (stmt.executeUpdate() != 1) {
+                throw new DAOException("Record does not exist");
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
     private Task extractFromResultSet(ResultSet rs) throws SQLException {
         return new Task(rs.getInt("id"), rs.getString("description"));
     }
