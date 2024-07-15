@@ -32,6 +32,22 @@ public class TaskDAO extends DAO<Task, Integer> {
         }
     }
 
+    @Override
+    public Integer insert(Task task) {
+        try (var stmt = conn.statement("INSERT INTO task (description) VALUES(?)")) {
+            stmt.setString(1, task.description());
+            stmt.executeUpdate();
+
+            try (var rs = stmt.getGeneratedKeys()) {
+                rs.next();
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
     private Task extractFromResultSet(ResultSet rs) throws SQLException {
         return new Task(rs.getInt("id"), rs.getString("description"));
     }

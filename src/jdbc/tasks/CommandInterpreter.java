@@ -41,7 +41,12 @@ public class CommandInterpreter {
     }
 
     private String insert (List<String> params) {
-        return "TODO";
+        if (params.isEmpty()){
+            return "You must provide a description";
+        }
+
+        dao.insert(new Task(params.get(0)));
+        return "Task added successfully!";
     }
 
     private String delete (List<String> params) {
